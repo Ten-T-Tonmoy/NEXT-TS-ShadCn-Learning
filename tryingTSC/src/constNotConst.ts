@@ -45,3 +45,5 @@ emp.name = "Doe"; // ✅ Allowed: Modify the properties
 
 // const [first] = [1, 2, 3];
 // first = 100;  // ❌ ERROR: Cannot reassign the destructured variable
+
+export {};

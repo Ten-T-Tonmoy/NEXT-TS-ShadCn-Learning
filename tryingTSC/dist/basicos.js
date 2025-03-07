@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 let b = 5;
 function incTimes(a) {
     return (b = a + b);
@@ -33,7 +35,7 @@ var test;
 })(test || (test = {}));
 let mySize = sizes.medium;
 let testing = test.third;
-console.log(testing);
+console.log(testing, mySize, user);
 function calculateShit(income, year) {
     if (income < 50000 && (year || 1000) < 2000) {
         return income * 1.2;

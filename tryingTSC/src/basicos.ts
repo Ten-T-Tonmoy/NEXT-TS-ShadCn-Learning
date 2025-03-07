@@ -56,7 +56,7 @@ let mySize: sizes = sizes.medium;
 //useful looking shit ngl
 //unused ts stuff wont get compiled in js
 let testing: test = test.third;
-console.log(testing);
+console.log(testing, mySize, user);
 
 //functions
 function calculateShit(income: number, year?: number): number {
@@ -88,3 +88,6 @@ const curDate = new Date();
 employee.todaydate(curDate);
 console.log(employee);
 // employee={id:3,name:'alice'} not allowed just
+
+export {};
+//this will make it seperate module
