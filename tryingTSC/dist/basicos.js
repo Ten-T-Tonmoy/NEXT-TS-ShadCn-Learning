@@ -1,4 +1,3 @@
-"use strict";
 let b = 5;
 function incTimes(a) {
     return (b = a + b);
@@ -35,4 +34,23 @@ var test;
 let mySize = sizes.medium;
 let testing = test.third;
 console.log(testing);
+function calculateShit(income, year) {
+    if (income < 50000 && (year || 1000) < 2000) {
+        return income * 1.2;
+    }
+    return 0;
+}
+console.log(calculateShit(20000));
+const employee = {
+    id: 1,
+    name: "",
+    todaydate(date) {
+        console.log(`Today date is frickin ${date}`);
+    },
+};
+employee.name = "Azmal";
+employee.machine = "ibpropane";
+const curDate = new Date();
+employee.todaydate(curDate);
+console.log(employee);
 //# sourceMappingURL=basicos.js.map

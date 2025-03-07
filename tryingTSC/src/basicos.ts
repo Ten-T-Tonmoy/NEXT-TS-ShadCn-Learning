@@ -70,3 +70,21 @@ console.log(calculateShit(20000));
 // always noUnusedLocals noImplicitReturns noUnsedParameters
 //basically will make it like C and clean?
 
+const employee: {
+  readonly id: number;
+  name: string;
+  machine?: string;
+  todaydate: (date: Date) => void;
+} = {
+  id: 1,
+  name: "",
+  todaydate(date: Date) {
+    console.log(`Today date is frickin ${date}`);
+  },
+};
+employee.name = "Azmal";
+employee.machine = "ibpropane";
+const curDate = new Date();
+employee.todaydate(curDate);
+console.log(employee);
+// employee={id:3,name:'alice'} not allowed just
