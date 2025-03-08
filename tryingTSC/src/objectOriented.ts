@@ -97,14 +97,27 @@ console.log(Ride.activeRides); //set and get return properties?
 //parent base or super
 //child sub or derived
 
-class Person {
+//abstract class cant be instanciated
+//also they are made only to be extended
+//jus like protected properties
+
+abstract class Person {
   constructor(public name: string, public height: number) {}
   get fullname(): string {
     return this.name;
   }
-  walk() {
+  /**
+   * protected vs private
+   * protected can only be inherited unlike private
+   * pretty shitty huh
+   */
+  protected walk() {
     console.log(`${this.name} is walking rn`);
   }
+
+  abstract pay(): void;
+  //can only exist within abstract classes
+  //also all inherited class must define it
 }
 
 class Manager extends Person {
@@ -113,7 +126,129 @@ class Manager extends Person {
     //super calls the parent constructor
     //dont forget to put parent variable in params
   }
+  //implicit override off so yea gotta use the keyword
+  override get fullname() {
+    return "Mr " + super.fullname + " brahmmacharya";
+    //yea pretty much overriding
+    //not same as overloading?
+  }
+  giveSalary() {
+    this.walk();
+    console.log("Salary given ");
+  }
+  pay() {
+    console.log(`Salay paid 25000`);
+  }
+}
+class Teacher extends Person {
+  constructor(name: string, height: number, public age: number) {
+    super(name, height);
+  }
+
+  override get fullname() {
+    return "Prof " + super.fullname + " chatarjee";
+  }
+  pay() {
+    console.log(`Salay paid 50000`);
+  }
+}
+class Principal extends Person {
+  constructor(name: string, height: number, public age: number) {
+    super(name, height);
+  }
+
+  override get fullname() {
+    return "Principal " + super.fullname + " mukharjee";
+  }
+  pay() {
+    console.log(`Salay paid 100000`);
+  }
 }
 
 const stu1 = new Manager("jafa", 120, 55);
-console.log(stu1);
+console.log(stu1.fullname);
+
+//-------polymorphism----------------
+
+function printNames(people: Person[]) {
+  for (const p of people) console.log(p.fullname);
+}
+printNames([
+  new Manager("kafa", 222, 66),
+  new Teacher("lafa", 292, 53),
+  new Principal("Balaji", 232, 88),
+]);
+//basically yea thats polymorphism
+//open closed principle==>
+//open for extension . closed for modification
+stu1.giveSalary();
+stu1.pay();
+
+//interface !!!!!!!!!!!!!!!!!!! shapes
+
+interface ICalender {
+  name: string;
+  //readonly roll:number;
+  addevent(): void;
+  removeEvent(): void;
+  //only method declaration not defination
+  //no interfaces,abstract,super in javascript only in ts
+}
+interface CloudCalender extends ICalender {
+  sync(): void;
+  //bruh jus like abstract class
+}
+
+class newCalender implements CloudCalender {
+  //damn use ctrl+. damn
+  constructor(public name: string) {}
+
+  sync(): void {
+    throw new Error("Method not implemented.");
+  }
+
+  addevent(): void {
+    throw new Error("Method not implemented.");
+  }
+  removeEvent(): void {
+    throw new Error("Method not implemented.");
+  }
+}
+const firstCalender: ICalender = {
+  name: "march",
+  addevent() {
+    console.log("event added");
+  },
+  removeEvent() {
+    console.log("event removed");
+  },
+  //cant miss any properties beaware
+};
+//bruh like shapping with interface?
+//dont have union or intersection like types
+
+const cloudCal = new newCalender("my cloud cal");
+console.log(cloudCal, firstCalender);
+//can readonly,optional?,extend,like basically abstract class
+
+interface HasName {
+  name: string;
+}
+
+interface CanSpeak {
+  speak(): void;
+}
+
+class Human implements HasName, CanSpeak {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} is speaking.`);
+  }
+}
+
+const person = new Human("Alice");
+person.speak(); // ✅ Alice is speaking.
