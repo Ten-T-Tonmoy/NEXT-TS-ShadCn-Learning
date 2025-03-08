@@ -65,12 +65,42 @@ type Quant = 50 | 100 | 200 | 500;
 const quality: Quant = 100;
 
 console.log(multi, typeFunc(2, "22"), quality);
-
-function greet(name: string | null | undefined) {
+//arg and return both union
+function greet(name: string | null | undefined): Quant | null {
   if (name) {
     console.log(`Hi mr ${name}`);
-  } else console.log("Hola amiga");
+    return 50;
+  } else {
+    console.log("Hola amiga");
+    return null;
+  }
 }
+type Value = {
+  price?: number;
+};
+function sayUp(price: number): Value | null | undefined {
+  return price === 25 ? null : { price: 50 };
+}
+
+const kurt = sayUp(30);
+console.log(kurt?.price?.toString() + "22");
+//beaware of property vs method!
+//length property bt shift() is method
+
+//optional chain sends error if null or undefined
+//or use if else bruh old method
+
 greet(undefined);
+
+// customer?[0] optional element access
+//log?.('a') optional calling bruh
+const Speed: number | null = null;
+const ride = {
+  //falsy values (undefined ,null,'',false,0)
+  Speed: Speed !== null ? Speed : 30,
+  Harsh: Speed ?? 50,
+  //nullish colaesing operator if null ternary +optional chaining
+};
+console.log(ride);
 
 export {};
