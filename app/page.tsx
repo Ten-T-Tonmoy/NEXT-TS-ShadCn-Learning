@@ -8,6 +8,7 @@ export default function Home() {
          hover:scale-110 cursor-pointer border-black"
         >
           NEXT JS Tailwind Template
+          
         </div>
       </div>
     </>

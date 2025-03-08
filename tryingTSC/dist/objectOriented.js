@@ -73,7 +73,87 @@ class Manager extends Person {
         super(name, height);
         this.age = age;
     }
+    get fullname() {
+        return "Mr " + super.fullname + " brahmmacharya";
+    }
+    giveSalary() {
+        this.walk();
+        console.log("Salary given ");
+    }
+    pay() {
+        console.log(`Salay paid 25000`);
+    }
+}
+class Teacher extends Person {
+    constructor(name, height, age) {
+        super(name, height);
+        this.age = age;
+    }
+    get fullname() {
+        return "Prof " + super.fullname + " chatarjee";
+    }
+    pay() {
+        console.log(`Salay paid 50000`);
+    }
+}
+class Principal extends Person {
+    constructor(name, height, age) {
+        super(name, height);
+        this.age = age;
+    }
+    get fullname() {
+        return "Principal " + super.fullname + " mukharjee";
+    }
+    pay() {
+        console.log(`Salay paid 100000`);
+    }
 }
 const stu1 = new Manager("jafa", 120, 55);
-console.log(stu1);
+console.log(stu1.fullname);
+function printNames(people) {
+    for (const p of people)
+        console.log(p.fullname);
+}
+printNames([
+    new Manager("kafa", 222, 66),
+    new Teacher("lafa", 292, 53),
+    new Principal("Balaji", 232, 88),
+]);
+stu1.giveSalary();
+stu1.pay();
+class newCalender {
+    constructor(name) {
+        this.name = name;
+    }
+    sync() {
+        throw new Error("Method not implemented.");
+    }
+    addevent() {
+        throw new Error("Method not implemented.");
+    }
+    removeEvent() {
+        throw new Error("Method not implemented.");
+    }
+}
+const firstCalender = {
+    name: "march",
+    addevent() {
+        console.log("event added");
+    },
+    removeEvent() {
+        console.log("event removed");
+    },
+};
+const cloudCal = new newCalender("my cloud cal");
+console.log(cloudCal, firstCalender);
+class Human {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        console.log(`${this.name} is speaking.`);
+    }
+}
+const person = new Human("Alice");
+person.speak();
 //# sourceMappingURL=objectOriented.js.map
