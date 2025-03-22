@@ -1,3 +1,5 @@
+import Todo from "../components/Todo";
+
 export default function Home() {
   return (
     <>
@@ -8,8 +10,8 @@ export default function Home() {
          hover:scale-110 cursor-pointer border-black"
         >
           NEXT JS Tailwind Template
-          
         </div>
+        <Todo />
       </div>
     </>
   );
